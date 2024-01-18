@@ -5,7 +5,10 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Store from "./redux/store";
 
-ReactDOM.render(
+const root = document.getElementById('root');
+const rootContainer = ReactDOM.createRoot(root);
+
+rootContainer.render(
   <Provider store={Store}>
     <App />
   </Provider>,
@@ -13,3 +16,12 @@ ReactDOM.render(
 );
 
 reportWebVitals();
+
+
+// const root = document.getElementById('root');
+// const rootContainer = ReactDOM.createRoot(root);
+// rootContainer.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );

@@ -12,27 +12,32 @@ const { isAuthenticated, isAdmin } = require("../middleware/auth");
 // create user
 router.post("/create-user", async (req, res, next) => {
   try {
-    const { name, email, password, avatar } = req.body;
+    console.log('varen');
+    console.log(req.body);
+    const { name, email, password } = req.body;
+console.log(name);
+    console.log(email);
+    console.log(password);
     const userEmail = await User.findOne({ email });
 
     if (userEmail) {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    const myCloud = await cloudinary.v2.uploader.upload(avatar, {
-      folder: "avatars",
-    });
+    // const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+      //   folder: "avatars",
+    // });
 
     const user = {
       name: name,
       email: email,
       password: password,
-      avatar: {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      },
+      // avatar: {
+        //   public_id: myCloud.public_id,
+        //   url: myCloud.secure_url,
+      // },
     };
-
+console.log(user);
     const activationToken = createActivationToken(user);
 
     const activationUrl = `http://localhost:3000/${activationToken}`;
@@ -80,7 +85,7 @@ router.post(
       const { name, email, password, avatar } = newUser;
 
       let user = await User.findOne({ email });
-
+console.log(user);
       if (user) {
         return next(new ErrorHandler("User already exists", 400));
       }
