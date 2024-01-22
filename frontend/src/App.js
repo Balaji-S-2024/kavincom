@@ -65,8 +65,8 @@ const App = () => {
   const [stripeApikey, setStripeApiKey] = useState("");
 
   async function getStripeApikey() {
-    const { data } = "pk_test_51N8wSIIgVdZ3fy8KtfIGuiGbTptdEltd8tHzhx6CrwIuslzoyzq2Fy49bBLkzp19FACzgN1F4v4BZ9d6bFq3E6wC00AcYZR3Ya";
-    // const { data } = await axios.get(`${server}/payment/stripeapikey`);
+    // const { data } = "pk_test_51N8wSIIgVdZ3fy8KtfIGuiGbTptdEltd8tHzhx6CrwIuslzoyzq2Fy49bBLkzp19FACzgN1F4v4BZ9d6bFq3E6wC00AcYZR3Ya";
+    const { data } = await axios.get(`${server}/payment/stripeapikey`);
     setStripeApiKey(data.stripeApikey);
   }
   useEffect(() => {

@@ -40,7 +40,7 @@ console.log(name);
 console.log(user);
     const activationToken = createActivationToken(user);
 
-    const activationUrl = `http://localhost:3000/${activationToken}`;
+    const activationUrl = `http://localhost:3000/activation/${activationToken}`;
 
     try {
       await sendMail({
